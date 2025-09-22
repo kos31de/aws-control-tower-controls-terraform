@@ -227,6 +227,26 @@ controls_with_params = [
     organizational_unit_ids = ["ou-2222-22222222"...]
   }
 ]
+
+controls_with_params = [
+  {
+    # パラメータつきのコントロール
+    control_names = [
+      {
+        # AWS-GR_RESTRICT_ROOT_USER
+        "5kvme4m5d2b4d7if2fs5yg2ui" = {
+          parameters = {
+            # AssumeRole（AssumeRoot）を経由して実行されたリクエストは除外され、本当にrootユーザーで直接実行された操作のみが違反検出対象になる
+            ExemptAssumeRoot = true
+          }
+        }
+      }
+    ],
+    organizational_unit_ids = [
+      "ou-xxxx"
+    ]
+  }
+]
 ```
 
 1. Open [All global identifiers](https://docs.aws.amazon.com/controltower/latest/controlreference/all-global-identifiers.html) in the AWS Control Tower documentation.
