@@ -31,7 +31,7 @@ variable "controls_with_params" {
   type = list(
     object({
       control_names = list(map(object({
-        parameters = optional(map(list(string)))
+        parameters = optional(map(any))
       })))
       organizational_unit_ids = list(string)
     })

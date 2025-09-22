@@ -81,16 +81,8 @@ locals {
         for ou_id in control_group.organizational_unit_ids : {
           control_id = keys(control)[0]
           ou_id      = ou_id
-          parameters = try(
-            # Get parameters if they exist, filter out empty lists
-            {
-              for k, v in values(control)[0].parameters :
-              k => v
-              if length(v) > 0
-            },
-            null
-          )
-          # parameters  = try(values(control)[0].parameters, null)
+          # Pass-through parameters as provided in tfvars (no filtering)
+          parameters  = try(values(control)[0].parameters, null)
           tags = try(values(control)[0].tags, null)
         }
       ]
